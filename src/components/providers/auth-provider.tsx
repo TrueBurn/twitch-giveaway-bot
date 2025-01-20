@@ -1,40 +1,46 @@
 'use client';
 
 import { createContext, useContext, useEffect, useState } from 'react';
-import type { AuthUser } from '@/lib/auth/auth-utils';
-import { getCurrentUser } from '@/lib/auth/auth-utils';
+import { useRouter } from 'next/navigation';
+import { createBrowserClient } from '@supabase/ssr';
+import type { User } from '@supabase/supabase-js';
 
-type AuthContextType = {
-  user: AuthUser | null;
-  isLoading: boolean;
-};
+interface AuthContextType {
+  user: User | null;
+  loading: boolean;
+}
 
-const AuthContext = createContext<AuthContextType>({
-  user: null,
-  isLoading: true,
-});
+const AuthContext = createContext<AuthContextType>({ user: null, loading: true });
 
 export function AuthProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<AuthUser | null>(null);
-  const [isLoading, setIsLoading] = useState(true);
+  const [user, setUser] = useState<User | null>(null);
+  const [loading, setLoading] = useState(true);
+  const router = useRouter();
+  
+  const supabase = createBrowserClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+  );
 
   useEffect(() => {
-    const loadUser = async () => {
-      try {
-        const user = await getCurrentUser();
-        setUser(user);
-      } catch (error) {
-        console.error('Error loading user:', error);
-      } finally {
-        setIsLoading(false);
+    const { data: { subscription } } = supabase.auth.onAuthStateChange(
+      (event: string, session) => {
+        setUser(session?.user ?? null);
+        setLoading(false);
+        
+        if (event === 'SIGNED_OUT') {
+          router.push('/');
+        }
       }
-    };
+    );
 
-    loadUser();
-  }, []);
+    return () => {
+      subscription.unsubscribe();
+    };
+  }, [router, supabase.auth]);
 
   return (
-    <AuthContext.Provider value={{ user, isLoading }}>
+    <AuthContext.Provider value={{ user, loading }}>
       {children}
     </AuthContext.Provider>
   );
