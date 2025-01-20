@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import { Inter } from 'next/font/google';
+import SupabaseProvider from '@/components/providers/supabase-provider';
 import { AuthProvider } from '@/components/providers/auth-provider';
 import './globals.css';
 import { ToastContainer } from '@/components/ui/toast';
@@ -21,10 +22,12 @@ export default function RootLayout({
     <html lang="en" className="h-full">
       <body className={`${inter.className} h-full`}>
         <ErrorBoundary>
-          <AuthProvider>
-            {children}
-            <ToastContainer />
-          </AuthProvider>
+          <SupabaseProvider>
+            <AuthProvider>
+              {children}
+              <ToastContainer />
+            </AuthProvider>
+          </SupabaseProvider>
         </ErrorBoundary>
       </body>
     </html>
