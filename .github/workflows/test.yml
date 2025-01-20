@@ -52,6 +52,9 @@ jobs:
       - name: Install dependencies
         run: pnpm install
 
+      - name: Build Next.js app
+        run: pnpm build
+
       - name: Run tests with coverage
         run: npx vitest run --coverage
 

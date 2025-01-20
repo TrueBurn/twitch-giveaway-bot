@@ -5,6 +5,7 @@
     ],
     "rules": {
       "no-unused-vars": "warn",
-      "no-console": "warn"
+      "no-console": "warn",
+      "@next/next/no-server-import-in-page": "error"
     }
   }

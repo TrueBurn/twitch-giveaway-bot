@@ -18,7 +18,9 @@
     "test:ui": "vitest --ui",
     "test:coverage": "vitest run --coverage",
     "test:watch": "vitest watch",
-    "preinstall": "npx only-allow pnpm"
+    "preinstall": "npx only-allow pnpm",
+    "check": "pnpm type-check && pnpm build",
+    "pretest": "pnpm check"
   },
   "dependencies": {
     "@radix-ui/react-slot": "^1.1.1",
