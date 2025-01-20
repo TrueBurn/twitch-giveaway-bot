@@ -1,0 +1,96 @@
+{
+  "projectName": "twitch-giveaway-bot",
+  "rules": {
+    "general": {
+      "framework": "next.js",
+      "styling": "tailwind",
+      "database": "supabase",
+      "deployment": "vercel",
+      "platform": "windows"
+    },
+    "structure": {
+      "components": "src\\components",
+      "pages": "src\\app",
+      "lib": "src\\lib",
+      "types": "src\\types",
+      "utils": "src\\utils"
+    },
+    "conventions": {
+      "componentNaming": "PascalCase",
+      "functionNaming": "camelCase",
+      "fileNaming": "kebab-case",
+      "typeNaming": "PascalCase",
+      "lineEndings": "crlf",
+      "imports": {
+        "order": [
+          "react",
+          "next",
+          "external-libraries",
+          "components",
+          "lib",
+          "utils",
+          "types",
+          "styles"
+        ]
+      }
+    },
+    "features": {
+      "twitchBot": {
+        "connection": "websocket",
+        "protocol": "irc",
+        "commands": ["!join", "!draw"],
+        "requiredEnvVars": [
+          "NEXT_PUBLIC_SUPABASE_URL",
+          "NEXT_PUBLIC_SUPABASE_ANON_KEY",
+          "TWITCH_BOT_USERNAME",
+          "TWITCH_BOT_TOKEN",
+          "TWITCH_CLIENT_ID",
+          "TWITCH_CLIENT_SECRET"
+        ]
+      },
+      "database": {
+        "tables": [
+          "users",
+          "giveaways",
+          "entries",
+          "prizes"
+        ],
+        "schemas": {
+          "public": true,
+          "auth": true
+        }
+      },
+      "auth": {
+        "provider": "twitch",
+        "roles": ["admin", "moderator"]
+      },
+      "ui": {
+        "adminDashboard": {
+          "routes": [
+            "/admin",
+            "/admin/giveaways",
+            "/admin/settings"
+          ]
+        },
+        "overlay": {
+          "routes": [
+            "/overlay/winner"
+          ]
+        }
+      }
+    },
+    "linting": {
+      "prettier": true,
+      "eslint": true,
+      "tailwind": true,
+      "config": {
+        "prettier": {
+          "endOfLine": "crlf"
+        },
+        "gitAttributes": {
+          "text": "auto"
+        }
+      }
+    }
+  }
+}
