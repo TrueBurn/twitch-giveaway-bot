@@ -1,4 +1,10 @@
 {
-  "buildCommand": "pnpm run build",
-  "installCommand": "pnpm install"
+  "version": 2,
+  "buildCommand": "pnpm build",
+  "installCommand": "pnpm install",
+  "framework": "nextjs",
+  "crons": [],
+  "env": {
+    "PNPM_VERSION": "8.15.4"
+  }
 } 
