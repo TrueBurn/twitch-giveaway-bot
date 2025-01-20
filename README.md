@@ -1,5 +1,14 @@
 # Twitch Giveaway Bot
 
+[![Tests](https://github.com/TrueBurn/twitch-giveaway-bot/actions/workflows/test.yml/badge.svg)](https://github.com/TrueBurn/twitch-giveaway-bot/actions/workflows/test.yml)
+[![codecov](https://codecov.io/github/TrueBurn/twitch-giveaway-bot/graph/badge.svg?token=5FRKGB8TAX)](https://codecov.io/github/TrueBurn/twitch-giveaway-bot)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+[![Next.js](https://img.shields.io/badge/Next.js-15.1.5-black)](https://nextjs.org/)
+[![pnpm](https://img.shields.io/badge/pnpm-8.15.4-orange)](https://pnpm.io/)
+[![TypeScript](https://img.shields.io/badge/TypeScript-5.x-blue)](https://www.typescriptlang.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-2.x-green)](https://supabase.com/)
+[![code style: prettier](https://img.shields.io/badge/code_style-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
+
 A Next.js application for managing Twitch giveaways with real-time updates and stream overlays.
 
 ## Features
