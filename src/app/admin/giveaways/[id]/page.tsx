@@ -196,7 +196,7 @@ export default function GiveawayDetailsPage() {
             {giveaway.status === 'active' && (
               <>
                 <Button onClick={drawWinner}>Draw Winner</Button>
-                <Button variant="danger" onClick={endGiveaway}>
+                <Button variant="destructive" onClick={endGiveaway}>
                   End Giveaway
                 </Button>
               </>

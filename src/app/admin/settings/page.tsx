@@ -51,7 +51,7 @@ export default function SettingsPage() {
                 Careful - these actions cannot be undone
               </p>
               <div className="mt-4">
-                <Button variant="danger">
+                <Button variant="destructive">
                   Reset All Settings
                 </Button>
               </div>

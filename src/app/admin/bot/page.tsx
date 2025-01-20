@@ -150,7 +150,7 @@ export default function BotDashboard() {
                 <Button
                   onClick={status.isConnected ? handleDisconnect : handleConnect}
                   disabled={isLoading}
-                  variant={status.isConnected ? 'danger' : 'default'}
+                  variant={status.isConnected ? 'destructive' : 'default'}
                 >
                   {isLoading ? 'Processing...' : 
                     status.isConnected ? 'Disconnect' : 'Connect'}

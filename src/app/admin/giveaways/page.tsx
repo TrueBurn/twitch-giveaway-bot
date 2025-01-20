@@ -150,7 +150,7 @@ export default function GiveawaysPage() {
                   {activeGiveaway.entry_count} entries
                 </p>
                 <Button
-                  variant="danger"
+                  variant="destructive"
                   onClick={() => endGiveaway(activeGiveaway.id)}
                 >
                   End Giveaway
