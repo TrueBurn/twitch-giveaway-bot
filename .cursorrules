@@ -6,7 +6,8 @@
       "styling": "tailwind",
       "database": "supabase",
       "deployment": "vercel",
-      "platform": "windows"
+      "platform": "windows",
+      "packageManager": "pnpm@8.15.4"
     },
     "structure": {
       "components": "src\\components",
@@ -32,6 +33,19 @@
           "types",
           "styles"
         ]
+      },
+      "packageManager": {
+        "required": "pnpm",
+        "version": "8.15.4",
+        "commands": {
+          "install": "pnpm install",
+          "add": "pnpm add",
+          "remove": "pnpm remove",
+          "update": "pnpm update",
+          "dev": "pnpm dev",
+          "build": "pnpm build",
+          "test": "pnpm test"
+        }
       }
     },
     "features": {

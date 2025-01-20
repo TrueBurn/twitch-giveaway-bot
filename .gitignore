@@ -82,3 +82,10 @@ yarn-error.log*
 
 # But keep the example
 !.env.example
+
+# Keep project configuration
+!.cursorrules
+!.npmrc
+!.prettierrc
+!.eslintrc
+!.gitattributes
