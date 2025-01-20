@@ -1,8 +1,7 @@
--- Enable RLS (Row Level Security)
-alter table public.users enable row level security;
-alter table public.giveaways enable row level security;
-alter table public.entries enable row level security;
-alter table public.prizes enable row level security;
+-- Reset schema (if needed)
+drop schema public cascade;
+create schema public;
+grant all on all tables in schema public to postgres, authenticated, service_role;
 
 -- Create enum types
 create type public.user_role as enum ('admin', 'moderator');
@@ -56,6 +55,12 @@ create table public.prizes (
   created_at timestamp with time zone default timezone('utc'::text, now()) not null,
   updated_at timestamp with time zone default timezone('utc'::text, now()) not null
 );
+
+-- Enable RLS (Row Level Security)
+alter table public.users enable row level security;
+alter table public.giveaways enable row level security;
+alter table public.entries enable row level security;
+alter table public.prizes enable row level security;
 
 -- RLS Policies
 
@@ -183,4 +188,16 @@ create trigger handle_giveaways_updated_at
 create trigger handle_prizes_updated_at
   before update on public.prizes
   for each row
-  execute function public.handle_updated_at(); 
+  execute function public.handle_updated_at();
+
+-- Add indexes
+create index idx_giveaways_status on public.giveaways(status);
+create index idx_entries_giveaway_id on public.entries(giveaway_id);
+create index idx_entries_twitch_username on public.entries(twitch_username);
+create index idx_users_twitch_id on public.users(twitch_id);
+
+-- Grant permissions
+grant usage on schema public to anon, authenticated;
+grant all on all tables in schema public to anon, authenticated;
+grant all on all sequences in schema public to anon, authenticated;
+grant all on all routines in schema public to anon, authenticated; 
