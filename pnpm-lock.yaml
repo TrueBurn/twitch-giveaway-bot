@@ -38,6 +38,9 @@ importers:
       tmi.js:
         specifier: ^1.8.5
         version: 1.8.5
+      twitch-giveaway-bot:
+        specifier: 'file:'
+        version: file:(@babel/core@7.26.0)(@types/react@18.3.18)
     devDependencies:
       '@eslint/eslintrc':
         specifier: ^3
@@ -2877,6 +2880,10 @@ packages:
 
   tslib@2.8.1:
     resolution: {integrity: sha512-oJFu94HQb+KVduSUQL7wnpmqnfmLsOA/nAh6b6EH0wCEoK0/mPeXU6c3wKDV83MkOuHPRHtSXKKU99IBazS/2w==}
+
+  'twitch-giveaway-bot@file:':
+    resolution: {directory: '', type: directory}
+    engines: {node: '>=20.0.0'}
 
   type-check@0.4.0:
     resolution: {integrity: sha512-XleUoc9uwGXqjWwXaUTZAmzMcFZ5858QA2vvx1Ur5xIcixXIP+8LnFDgRplU30us6teqdlskFfu+ae4K79Ooew==}
@@ -6150,6 +6157,30 @@ snapshots:
       strip-bom: 3.0.0
 
   tslib@2.8.1: {}
+
+  twitch-giveaway-bot@file:(@babel/core@7.26.0)(@types/react@18.3.18):
+    dependencies:
+      '@radix-ui/react-slot': 1.1.1(@types/react@18.3.18)(react@18.3.1)
+      '@supabase/ssr': 0.5.2(@supabase/supabase-js@2.47.16)
+      '@supabase/supabase-js': 2.47.16
+      clsx: 2.1.1
+      lucide-react: 0.473.0(react@18.3.1)
+      next: 15.1.5(@babel/core@7.26.0)(react-dom@18.3.1(react@18.3.1))(react@18.3.1)
+      react: 18.3.1
+      react-dom: 18.3.1(react@18.3.1)
+      tailwind-merge: 2.6.0
+      tmi.js: 1.8.5
+    transitivePeerDependencies:
+      - '@babel/core'
+      - '@opentelemetry/api'
+      - '@playwright/test'
+      - '@types/react'
+      - babel-plugin-macros
+      - babel-plugin-react-compiler
+      - bufferutil
+      - encoding
+      - sass
+      - utf-8-validate
 
   type-check@0.4.0:
     dependencies:
