@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { useState, type ChangeEvent } from 'react';
+import { useState, useEffect, type ChangeEvent } from 'react';
 import { AdminLayout } from '@/components/layout/admin-layout';
 import { PreviewOverlay } from '@/components/overlay/preview-overlay';
 import { Button } from '@/components/ui/button';
@@ -8,19 +8,28 @@ import { Input } from '@/components/ui/input';
 import { toast } from '@/components/ui/toast';
 
 export default function OverlayPreviewPage() {
+  const [mounted, setMounted] = useState(false);
   const [previewState, setPreviewState] = useState({
     prize: 'Gaming Chair',
     entries: 42,
     winner: '',
   });
-
   const [overlayUrl, setOverlayUrl] = useState('');
 
-  // Generate overlay URL when component mounts
-  useState(() => {
-    const baseUrl = window.location.origin;
-    setOverlayUrl(`${baseUrl}/overlay/winner`);
-  });
+  useEffect(() => {
+    setMounted(true);
+  }, []);
+
+  useEffect(() => {
+    if (mounted) {
+      const baseUrl = window.location.origin;
+      setOverlayUrl(`${baseUrl}/overlay/winner`);
+    }
+  }, [mounted]);
+
+  if (!mounted) {
+    return null;
+  }
 
   const copyOverlayUrl = () => {
     navigator.clipboard.writeText(overlayUrl)

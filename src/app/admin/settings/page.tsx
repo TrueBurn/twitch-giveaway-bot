@@ -1,3 +1,5 @@
+"use client";
+
 import Link from 'next/link';
 import { AdminLayout } from '@/components/layout/admin-layout';
 import { Button } from '@/components/ui/button';
